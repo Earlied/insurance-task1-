@@ -5,6 +5,8 @@ import com.company.model.obligation.ObligationPersonal;
 import com.company.model.obligation.ObligationProperty;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Insurance {
     private String description;
@@ -80,12 +82,26 @@ public class Insurance {
         return result;
     }
 
+    public List<Obligation> sortByRisk(){
+        obligations.sort(Comparator.comparingInt(Obligation::getProbability));
+        return obligations;
+    }
+
+    public List<Obligation> findByCost(long min, long max){
+        ArrayList<Obligation> result = new ArrayList<>();
+        for (Obligation o : this.obligations){
+            if(o.getCost() > min && o.getCost() < max){
+                result.add(o);
+            }
+        }
+        return result;
+    }
+
+
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Insurance: ");
-        sb.append("description='").append(description).append('\'');
-        sb.append(", obligations=").append(obligations);
-        sb.append('.');
-        return sb.toString();
+        return  "Description: " + description +
+                ",\nObligations:\n" + obligations;
     }
 }
