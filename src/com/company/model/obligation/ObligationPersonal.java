@@ -17,8 +17,6 @@ public class ObligationPersonal extends Obligation{
 
     @Override
     public String toString() {
-        return "ObligationPersonal{" +
-                "naturalPersonName='" + naturalPersonName + '\'' +
-                "} " + super.toString();
+        return  "Natural Person: " + naturalPersonName + "\n" + super.toString();
     }
 }

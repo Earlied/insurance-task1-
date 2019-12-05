@@ -1,8 +1,8 @@
 package com.company.model.obligation;
 
-import com.company.model.CostMultipliers;
+import com.company.model.Probabilities;
 
-public class Obligation implements CostMultipliers {
+public class Obligation implements Probabilities {
     private String description;
     private int probability; // 0-4: 0 - rare, ... , 4 - frequent
     private long approxImpact; // dollars
@@ -12,7 +12,7 @@ public class Obligation implements CostMultipliers {
         this.description = description;
         this.probability = probability;
         this.approxImpact = impact;
-        this.setCost(this.calculateCost());
+        this.cost = this.calculateCost();
     }
 
     public String getDescription() {
@@ -53,11 +53,9 @@ public class Obligation implements CostMultipliers {
 
     @Override
     public String toString() {
-        return "Obligation{" +
-                "name='" + description + '\'' +
-                ", probability=" + probability +
-                ", approxImpact=" + approxImpact +
-                ", cost=" + cost +
-                '}';
+        return  "Description: '" + description + '\'' +
+                ",\nProbability: " + PROBABILITIES[probability] +
+                ",\nApproximate impact: " + approxImpact +
+                "$,\nCost: " + cost + "$";
     }
 }

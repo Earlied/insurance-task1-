@@ -17,8 +17,6 @@ public class ObligationProperty extends Obligation {
 
     @Override
     public String toString() {
-        return "ObligationProperty{" +
-                "propertyID=" + propertyID +
-                "} " + super.toString();
+        return  "PropertyID:" + propertyID + "\n" + super.toString();
     }
 }
